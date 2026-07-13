@@ -81,7 +81,7 @@ function App() {
       {/* BACKGROUND DEGRADE */}
       <div className="bg-gradient"></div>
 
-      {/* COMPONENTE DE BOLHAS ANIMADAS */}
+      {/* COMPONENTE DE BOLHAS ANIMADAS CRISTALINAS */}
       <div className="bubbles-container">
         <div className="bubble"></div>
         <div className="bubble"></div>
@@ -95,10 +95,31 @@ function App() {
         <div className="bubble"></div>
       </div>
 
-      {/* NAVBAR SUPERIOR */}
+      {/* NAVBAR SUPERIOR COM LOGO */}
       <nav className="navbar">
-        <div className="brand" style={{ cursor: 'pointer' }} onClick={() => { setCurrentScreen('home'); clearForm(); }}>
-          Adworkspace
+        <div 
+          className="brand" 
+          style={{ 
+            cursor: 'pointer', 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '12px' 
+          }} 
+          onClick={() => { setCurrentScreen('home'); clearForm(); }}
+        >
+          {/* Tag da Imagem da Logo */}
+          <img 
+            src="/logo.png" 
+            alt="Adworkspace Logo" 
+            style={{ 
+              height: '36px', 
+              width: 'auto',
+              objectFit: 'contain'
+            }} 
+          />
+          <span style={{ fontWeight: '700', fontSize: '22px', letterSpacing: '-0.5px' }}>
+            Adworkspace
+          </span>
         </div>
         
         {currentScreen === 'home' && (
@@ -133,7 +154,7 @@ function App() {
           </div>
         )}
 
-        {/* 1. HOME (SEM MENCIONAR GRATUIDADE) */}
+        {/* 1. HOME */}
         {currentScreen === 'home' && (
           <>
             <h1 className="hero-title">
