@@ -238,3 +238,36 @@ body {
 .btn-back:hover {
   color: #cbd5e1;
 }
+/* Container relativo para posicionar o olhinho */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Ajusta o input de senha para dar espaço ao botão do olhinho */
+.password-input-wrapper .form-input {
+  width: 100%;
+  padding-right: 45px; /* Espaço para o ícone */
+}
+
+/* Botão invisível do olhinho */
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.password-toggle-btn:hover {
+  color: #3b82f6;
+}
