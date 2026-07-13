@@ -18,7 +18,7 @@ function App() {
         zIndex: 10
       }}>
         <div style={{ fontSize: '24px', fontWeight: '700', letterSpacing: '-1px' }}>
-          Adworkspace<span style={{ color: '#3b82f6' }}>.com</span>
+          Adworkspace
         </div>
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
