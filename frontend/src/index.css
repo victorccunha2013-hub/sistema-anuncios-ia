@@ -295,17 +295,20 @@ body {
   pointer-events: none;
 }
 
-/* Base de cada bolha - AGORA REALMENTE BRANCA E BRILHANTE */
+/* Base de cada bolha - EFEITO ÁGUA CRISTALINA */
 .bubble {
   position: absolute;
   bottom: -60px;
-  /* Fundo branco bem mais forte e definido */
-  background: rgba(255, 255, 255, 0.45); 
-  /* Borda branca bem visível */
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  /* Fundo azul bem clarinho e translúcido (cor de água/piscina) */
+  background: rgba(191, 219, 254, 0.35); 
+  /* Borda azul clara bem definida */
+  border: 1px solid rgba(219, 234, 254, 0.8);
   border-radius: 50%;
-  /* Brilho externo branco para destacar sobre o fundo escuro */
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6), inset 0 0 6px rgba(255, 255, 255, 0.9);
+  /* Brilho interno e externo azul claro/branco (sem sombras pretas!) */
+  box-shadow: 
+    0 0 8px rgba(191, 219, 254, 0.5), 
+    inset 0 0 8px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 6px rgba(147, 197, 253, 0.6);
   animation: floatUp 15s infinite linear;
 }
 
@@ -316,10 +319,10 @@ body {
     opacity: 0;
   }
   10% {
-    opacity: 0.9; /* Super nítida no início */
+    opacity: 0.85; /* Bem visível desde o começo */
   }
   90% {
-    opacity: 0.9;
+    opacity: 0.85;
   }
   100% {
     transform: translateY(-115vh) scale(1.2) translateX(30px);
