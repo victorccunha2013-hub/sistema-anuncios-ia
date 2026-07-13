@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { supabase } from './supabaseClient'
 import './index.css'
+import logo from './logo.png' // Importação segura para o GitHub Pages!
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState('home')
@@ -107,9 +108,9 @@ function App() {
           }} 
           onClick={() => { setCurrentScreen('home'); clearForm(); }}
         >
-          {/* Tag da Imagem da Logo */}
+          {/* Usando a variável importada para renderizar o logo */}
           <img 
-            src="/logo.png" 
+            src={logo} 
             alt="Adworkspace Logo" 
             style={{ 
               height: '36px', 
