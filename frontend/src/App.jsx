@@ -53,7 +53,7 @@ function App() {
     if (error) {
       setMessage({ type: 'error', text: error.message })
     } else {
-      setMessage({ type: 'success', text: 'Cadastro realizado! Verifique seu e-mail para confirmar a conta.' })
+      setMessage({ type: 'success', text: 'Cadastro realizado! Verifique seu e-mail para confirmar e ativar sua conta.' })
     }
   }
 
@@ -78,7 +78,7 @@ function App() {
 
   return (
     <div>
-      {/* NOVO BACKGROUND DEGRADE */}
+      {/* BACKGROUND DEGRADE */}
       <div className="bg-gradient"></div>
 
       {/* COMPONENTE DE BOLHAS ANIMADAS */}
@@ -133,7 +133,7 @@ function App() {
           </div>
         )}
 
-        {/* 1. HOME */}
+        {/* 1. HOME (SEM MENCIONAR GRATUIDADE) */}
         {currentScreen === 'home' && (
           <>
             <h1 className="hero-title">
@@ -141,13 +141,13 @@ function App() {
               <span className="text-blue">anúncios com IA</span>
             </h1>
             <p className="hero-subtitle">
-              Transforme as suas ideias em campanhas prontas para o seu negócio com a liberdade de personalizar cada detalhe.
+              Transforme as suas ideias em campanhas de alta conversão prontas para o seu negócio com total liberdade de personalização.
             </p>
             <button className="btn btn-large" onClick={() => { setCurrentScreen('register'); clearForm(); }}>
-              Comece já
+              Criar minha conta
             </button>
             <p className="footer-text">
-              Comece grátis. Não é necessário cartão de crédito.
+              Desbloqueie o poder da Inteligência Artificial aplicada ao marketing digital.
             </p>
           </>
         )}
@@ -202,7 +202,7 @@ function App() {
             </form>
             
             <p className="auth-switch">
-              Não tem uma conta? 
+              Ainda não possui acesso? 
               <span className="auth-link" onClick={() => { setCurrentScreen('register'); clearForm(); }}>Cadastre-se</span>
             </p>
           </div>
@@ -215,7 +215,7 @@ function App() {
               ← Voltar para o início
             </button>
             <h2 className="auth-title">Crie sua conta</h2>
-            <p className="auth-subtitle">Comece a gerar anúncios com IA gratuitamente</p>
+            <p className="auth-subtitle">Faça seu registro para começar a gerar campanhas otimizadas</p>
             
             <form onSubmit={handleRegister}>
               <div className="form-group">
@@ -287,12 +287,12 @@ function App() {
               </div>
 
               <button type="submit" disabled={loading} className="btn btn-large" style={{ width: '100%', padding: '12px', fontSize: '16px', marginTop: '10px' }}>
-                {loading ? 'Criando...' : 'Criar Conta'}
+                {loading ? 'Processando...' : 'Confirmar Cadastro'}
               </button>
             </form>
             
             <p className="auth-switch">
-              Já possui uma conta? 
+              Já possui uma credencial de acesso? 
               <span className="auth-link" onClick={() => { setCurrentScreen('login'); clearForm(); }}>Fazer Login</span>
             </p>
           </div>
