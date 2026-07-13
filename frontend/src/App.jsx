@@ -1,65 +1,94 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.css'
 
 function App() {
-  const [prompt, setPrompt] = useState('')
-
   return (
-    <div style={{
-      width: '100%',
-      maxWidth: '550px',
-      backgroundColor: '#1e293b',
-      padding: '40px',
-      borderRadius: '16px',
-      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
-      border: '1px solid #334155'
-    }}>
-      <header style={{ marginBottom: '32px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '28px', fontWeight: '700', marginBottom: '8px', color: '#38bdf8' }}>
-          AdsGen <span style={{ color: '#fff' }}>AI</span>
-        </h1>
-        <p style={{ color: '#94a3b8', fontSize: '14px' }}>
-          Crie anúncios de alta conversão em segundos usando inteligência artificial.
-        </p>
-      </header>
+    <div style={{ minHeight: '100vh', position: 'relative' }}>
+      <div className="bg-gradient"></div>
 
-      <main style={{ display: 'flex', flexDirection: 'col', gap: '20px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <label style={{ fontSize: '14px', fontWeight: '500', color: '#cbd5e1' }}>
-            O que você deseja anunciar?
-          </label>
-          <input 
-            type="text" 
-            placeholder="Ex: Curso de programação para iniciantes..." 
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            style={{
-              padding: '14px 16px',
-              borderRadius: '8px',
-              border: '1px solid #475569',
-              backgroundColor: '#0f172a',
-              color: '#fff',
-              fontSize: '15px',
-              outline: 'none',
-              transition: 'border-color 0.2s'
-            }}
-          />
+      {/* NAVBAR SUPERIOR */}
+      <nav style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '20px 80px',
+        position: 'fixed',
+        width: '100%',
+        top: 0,
+        zIndex: 10
+      }}>
+        <div style={{ fontSize: '24px', fontWeight: '700', letterSpacing: '-1px' }}>
+          AdsWorkspace<span style={{ color: '#3b82f6' }}>.com</span>
         </div>
+        
+        <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+          <a href="#" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '14px' }}>Produtos</a>
+          <a href="#" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '14px' }}>Preços</a>
+          <button style={{
+            backgroundColor: '#3b82f6',
+            color: 'white',
+            border: 'none',
+            padding: '10px 25px',
+            borderRadius: '25px',
+            fontWeight: '600',
+            cursor: 'pointer',
+            fontSize: '14px',
+            transition: '0.3s'
+          }}>
+            Entrar
+          </button>
+        </div>
+      </nav>
+
+      {/* HERO SECTION CENTRAL */}
+      <main style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        textAlign: 'center',
+        padding: '0 20px'
+      }}>
+        <h1 style={{
+          fontSize: '72px',
+          fontWeight: '800',
+          lineHeight: '1.1',
+          marginBottom: '24px',
+          maxWidth: '900px'
+        }}>
+          A nova maneira de criar <br /> 
+          <span style={{ color: '#3b82f6' }}>anúncios com IA</span>
+        </h1>
+        
+        <p style={{
+          fontSize: '20px',
+          color: '#94a3b8',
+          marginBottom: '40px',
+          maxWidth: '700px',
+          lineHeight: '1.6'
+        }}>
+          Transforme suas ideias em campanhas prontas para o seu negócio com a liberdade de personalizar cada detalhe.
+        </p>
 
         <button style={{
-          padding: '14px',
-          borderRadius: '8px',
+          backgroundColor: '#2563eb',
+          color: 'white',
           border: 'none',
-          backgroundColor: '#38bdf8',
-          color: '#0f172a',
-          fontWeight: '600',
-          fontSize: '16px',
+          padding: '18px 45px',
+          borderRadius: '40px',
+          fontSize: '18px',
+          fontWeight: '700',
           cursor: 'pointer',
-          transition: 'background-color 0.2s',
-          marginTop: '8px'
+          boxShadow: '0 4px 15px rgba(37, 99, 235, 0.4)',
+          transition: '0.3s'
         }}>
-          Gerar Cópia do Anúncio
+          Comece já
         </button>
+        
+        <p style={{ marginTop: '20px', fontSize: '13px', color: '#64748b' }}>
+          Comece grátis. Não é necessário cartão de crédito.
+        </p>
       </main>
     </div>
   )
