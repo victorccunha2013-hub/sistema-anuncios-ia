@@ -271,3 +271,66 @@ body {
 .password-toggle-btn:hover {
   color: #3b82f6;
 }
+/* Gradiente moderno: azul claro/vibrante na base, azul bem escuro no topo */
+.bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to top, #1e40af 0%, #0f172a 60%, #020617 100%);
+  z-index: -2;
+  overflow: hidden;
+}
+
+/* Container que segura as bolhas animadas */
+.bubbles-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none; /* Garante que as bolhas não atrapalhem os cliques */
+}
+
+/* Base de cada bolha */
+.bubble {
+  position: absolute;
+  bottom: -60px;
+  background: rgba(255, 255, 255, 0.05); /* Extremamente sutil e elegante */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  animation: floatUp 15s infinite linear;
+}
+
+/* Animação que faz as bolhas subirem suavemente balançando */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.5) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-115vh) scale(1.2) translateX(30px);
+    opacity: 0;
+  }
+}
+
+/* Variações de tamanho, posição e velocidade para dar profundidade natural */
+.bubble:nth-child(1) { left: 8%; width: 40px; height: 40px; animation-duration: 22s; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 22%; width: 20px; height: 20px; animation-duration: 16s; animation-delay: 3s; }
+.bubble:nth-child(3) { left: 35%; width: 55px; height: 55px; animation-duration: 28s; animation-delay: 7s; }
+.bubble:nth-child(4) { left: 50%; width: 30px; height: 30px; animation-duration: 19s; animation-delay: 1.5s; }
+.bubble:nth-child(5) { left: 65%; width: 45px; height: 45px; animation-duration: 25s; animation-delay: 9s; }
+.bubble:nth-child(6) { left: 78%; width: 25px; height: 25px; animation-duration: 15s; animation-delay: 4.5s; }
+.bubble:nth-child(7) { left: 90%; width: 35px; height: 35px; animation-duration: 21s; animation-delay: 11s; }
+.bubble:nth-child(8) { left: 15%; width: 28px; height: 28px; animation-duration: 18s; animation-delay: 6s; }
+.bubble:nth-child(9) { left: 58%; width: 38px; height: 38px; animation-duration: 24s; animation-delay: 13s; }
+.bubble:nth-child(10) { left: 83%; width: 18px; height: 18px; animation-duration: 14s; animation-delay: 8.5s; }

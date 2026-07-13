@@ -78,7 +78,22 @@ function App() {
 
   return (
     <div>
+      {/* NOVO BACKGROUND DEGRADE */}
       <div className="bg-gradient"></div>
+
+      {/* COMPONENTE DE BOLHAS ANIMADAS */}
+      <div className="bubbles-container">
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+      </div>
 
       {/* NAVBAR SUPERIOR */}
       <nav className="navbar">
@@ -176,7 +191,6 @@ function App() {
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? "Ocultar senha" : "Mostrar senha"}
                   >
-                    {/* Se estiver mostrando a senha, exibe o macaquinho tampando os olhos 🙈, se oculto, exibe o macaquinho comum 🐵 */}
                     {showPassword ? '🙈' : '🐵'}
                   </button>
                 </div>
