@@ -292,16 +292,20 @@ body {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  pointer-events: none; /* Garante que as bolhas não atrapalhem os cliques */
+  pointer-events: none;
 }
 
-/* Base de cada bolha */
+/* Base de cada bolha (Agora muito mais visível e com efeito realista!) */
 .bubble {
   position: absolute;
   bottom: -60px;
-  background: rgba(255, 255, 255, 0.05); /* Extremamente sutil e elegante */
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Fundo branco translúcido mais forte */
+  background: rgba(255, 255, 255, 0.15); 
+  /* Borda mais evidente */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
+  /* Efeito de brilho realista nas bordas da bolha */
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.1);
   animation: floatUp 15s infinite linear;
 }
 
@@ -312,10 +316,10 @@ body {
     opacity: 0;
   }
   10% {
-    opacity: 1;
+    opacity: 0.8; /* Aparece com mais destaque */
   }
   90% {
-    opacity: 1;
+    opacity: 0.8;
   }
   100% {
     transform: translateY(-115vh) scale(1.2) translateX(30px);
