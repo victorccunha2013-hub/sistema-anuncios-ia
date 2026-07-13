@@ -1,28 +1,66 @@
 import React, { useState } from 'react'
+import { supabase } from './supabaseClient'
 import './index.css'
 
 function App() {
-  // Estado para controlar qual tela está ativa: 'home', 'login' ou 'register'
   const [currentScreen, setCurrentScreen] = useState('home')
   
-  // Estados para os campos do formulário
+  // Estados para os campos do formulário e feedback
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState({ type: '', text: '' })
 
-  const handleAuthSubmit = (e) => {
+  // Função para lidar com o Cadastro
+  const handleRegister = async (e) => {
     e.preventDefault()
-    // Aqui no futuro conectaremos a API do backend
-    alert(`Dados enviados para a tela de ${currentScreen === 'login' ? 'Login' : 'Cadastro'}!`)
+    setLoading(true)
+    setMessage({ type: '', text: '' })
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: name }
+      }
+    })
+
+    setLoading(false)
+    if (error) {
+      setMessage({ type: 'error', text: error.message })
+    } else {
+      setMessage({ type: 'success', text: 'Cadastro realizado! Verifique seu e-mail para confirmar a conta.' })
+    }
+  }
+
+  // Função para lidar com o Login
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setMessage({ type: '', text: '' })
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    })
+
+    setLoading(false)
+    if (error) {
+      setMessage({ type: 'error', text: error.message })
+    } else {
+      setMessage({ type: 'success', text: `Conectado com sucesso! Usuário: ${data.user.email}` })
+      // No futuro, aqui redirecionamos para o painel de criação de anúncios
+    }
   }
 
   return (
     <div>
       <div className="bg-gradient"></div>
 
-      {/* NAVBAR SUPERIOR - Visível em todas as telas ou clicável para voltar */}
+      {/* NAVBAR SUPERIOR */}
       <nav className="navbar">
-        <div className="brand" style={{ cursor: 'pointer' }} onClick={() => setCurrentScreen('home')}>
+        <div className="brand" style={{ cursor: 'pointer' }} onClick={() => { setCurrentScreen('home'); setMessage({ type: '', text: '' }); }}>
           Adworkspace
         </div>
         
@@ -37,10 +75,29 @@ function App() {
         )}
       </nav>
 
-      {/* RENDERIZAÇÃO CONDICIONAL DE TELAS */}
+      {/* RENDERIZAÇÃO CONDICIONAL */}
       <main className="hero-container">
         
-        {/* 1. TELA PRINCIPAL (HOME) */}
+        {/* mensagens de erro ou sucesso */}
+        {message.text && (
+          <div style={{
+            padding: '12px 20px',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            fontSize: '14px',
+            fontWeight: '600',
+            backgroundColor: message.type === 'error' ? '#ef444422' : '#22c55e22',
+            border: `1px solid ${message.type === 'error' ? '#ef4444' : '#22c55e'}`,
+            color: message.type === 'error' ? '#f87171' : '#4ade80',
+            maxWidth: '420px',
+            width: '100%',
+            textAlign: 'center'
+          }}>
+            {message.text}
+          </div>
+        )}
+
+        {/* 1. HOME */}
         {currentScreen === 'home' && (
           <>
             <h1 className="hero-title">
@@ -59,16 +116,16 @@ function App() {
           </>
         )}
 
-        {/* 2. TELA DE LOGIN */}
+        {/* 2. LOGIN */}
         {currentScreen === 'login' && (
           <div className="auth-container">
-            <button className="btn-back" onClick={() => setCurrentScreen('home')}>
+            <button className="btn-back" onClick={() => { setCurrentScreen('home'); setMessage({ type: '', text: '' }); }}>
               ← Voltar para o início
             </button>
             <h2 className="auth-title">Acesse sua conta</h2>
             <p className="auth-subtitle">Bem-vindo de volta ao Adworkspace</p>
             
-            <form onSubmit={handleAuthSubmit}>
+            <form onSubmit={handleLogin}>
               <div className="form-group">
                 <label>E-mail</label>
                 <input 
@@ -91,28 +148,28 @@ function App() {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-large" style={{ width: '100%', padding: '12px', fontSize: '16px', marginTop: '10px' }}>
-                Entrar
+              <button type="submit" disabled={loading} className="btn btn-large" style={{ width: '100%', padding: '12px', fontSize: '16px', marginTop: '10px' }}>
+                {loading ? 'Carregando...' : 'Entrar'}
               </button>
             </form>
             
             <p className="auth-switch">
               Não tem uma conta? 
-              <span className="auth-link" onClick={() => setCurrentScreen('register')}>Cadastre-se</span>
+              <span className="auth-link" onClick={() => { setCurrentScreen('register'); setMessage({ type: '', text: '' }); }}>Cadastre-se</span>
             </p>
           </div>
         )}
 
-        {/* 3. TELA DE CADASTRO (CRIAR CONTA) */}
+        {/* 3. CADASTRO */}
         {currentScreen === 'register' && (
           <div className="auth-container">
-            <button className="btn-back" onClick={() => setCurrentScreen('home')}>
+            <button className="btn-back" onClick={() => { setCurrentScreen('home'); setMessage({ type: '', text: '' }); }}>
               ← Voltar para o início
             </button>
             <h2 className="auth-title">Crie sua conta</h2>
             <p className="auth-subtitle">Comece a gerar anúncios com IA gratuitamente</p>
             
-            <form onSubmit={handleAuthSubmit}>
+            <form onSubmit={handleRegister}>
               <div className="form-group">
                 <label>Nome Completo</label>
                 <input 
@@ -146,14 +203,14 @@ function App() {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-large" style={{ width: '100%', padding: '12px', fontSize: '16px', marginTop: '10px' }}>
-                Criar Conta
+              <button type="submit" disabled={loading} className="btn btn-large" style={{ width: '100%', padding: '12px', fontSize: '16px', marginTop: '10px' }}>
+                {loading ? 'Criando...' : 'Criar Conta'}
               </button>
             </form>
             
             <p className="auth-switch">
               Já possui uma conta? 
-              <span className="auth-link" onClick={() => setCurrentScreen('login')}>Fazer Login</span>
+              <span className="auth-link" onClick={() => { setCurrentScreen('login'); setMessage({ type: '', text: '' }); }}>Fazer Login</span>
             </p>
           </div>
         )}
