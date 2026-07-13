@@ -18,7 +18,7 @@ function App() {
         zIndex: 10
       }}>
         <div style={{ fontSize: '24px', fontWeight: '700', letterSpacing: '-1px' }}>
-          AdsWorkspace<span style={{ color: '#3b82f6' }}>.com</span>
+          Adworkspace<span style={{ color: '#3b82f6' }}>.com</span>
         </div>
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
@@ -68,7 +68,7 @@ function App() {
           maxWidth: '700px',
           lineHeight: '1.6'
         }}>
-          Transforme suas ideias em campanhas prontas para o seu negócio com a liberdade de personalizar cada detalhe.
+          Transforme as suas ideias em campanhas prontas para o seu negócio com a liberdade de personalizar cada detalhe.
         </p>
 
         <button style={{
