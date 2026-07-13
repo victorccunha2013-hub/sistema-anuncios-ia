@@ -11,7 +11,7 @@ function App() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
   
-  // Estados para controlar a visibilidade da senha (olhinho)
+  // Estados para controlar a visibilidade da senha (macaquinho)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -35,7 +35,6 @@ function App() {
     setLoading(true)
     setMessage({ type: '', text: '' })
 
-    // Validar se as senhas coincidem
     if (password !== confirmPassword) {
       setLoading(false)
       setMessage({ type: 'error', text: 'As senhas inseridas não coincidem!' })
@@ -101,7 +100,6 @@ function App() {
       {/* CONTAINER CENTRAL */}
       <main className="hero-container">
         
-        {/* Balão de Feedback */}
         {message.text && (
           <div style={{
             padding: '12px 20px',
@@ -178,7 +176,8 @@ function App() {
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? "Ocultar senha" : "Mostrar senha"}
                   >
-                    {showPassword ? '👁️' : '🙈'}
+                    {/* Se estiver mostrando a senha, exibe o macaquinho tampando os olhos 🙈, se oculto, exibe o macaquinho comum 🐵 */}
+                    {showPassword ? '🙈' : '🐵'}
                   </button>
                 </div>
               </div>
@@ -246,7 +245,7 @@ function App() {
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? "Ocultar senha" : "Mostrar senha"}
                   >
-                    {showPassword ? '👁️' : '🙈'}
+                    {showPassword ? '🙈' : '🐵'}
                   </button>
                 </div>
               </div>
@@ -268,7 +267,7 @@ function App() {
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     title={showConfirmPassword ? "Ocultar senha" : "Mostrar senha"}
                   >
-                    {showConfirmPassword ? '👁️' : '🙈'}
+                    {showConfirmPassword ? '🙈' : '🐵'}
                   </button>
                 </div>
               </div>
