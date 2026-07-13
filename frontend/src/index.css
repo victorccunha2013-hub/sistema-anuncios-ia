@@ -295,31 +295,31 @@ body {
   pointer-events: none;
 }
 
-/* Base de cada bolha (Agora muito mais visível e com efeito realista!) */
+/* Base de cada bolha - AGORA REALMENTE BRANCA E BRILHANTE */
 .bubble {
   position: absolute;
   bottom: -60px;
-  /* Fundo branco translúcido mais forte */
-  background: rgba(255, 255, 255, 0.15); 
-  /* Borda mais evidente */
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Fundo branco bem mais forte e definido */
+  background: rgba(255, 255, 255, 0.45); 
+  /* Borda branca bem visível */
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
-  /* Efeito de brilho realista nas bordas da bolha */
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.1);
+  /* Brilho externo branco para destacar sobre o fundo escuro */
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6), inset 0 0 6px rgba(255, 255, 255, 0.9);
   animation: floatUp 15s infinite linear;
 }
 
-/* Animação que faz as bolhas subirem suavemente balançando */
+/* Animação que faz as bolhas subirem suavemente */
 @keyframes floatUp {
   0% {
     transform: translateY(0) scale(0.5) translateX(0);
     opacity: 0;
   }
   10% {
-    opacity: 0.8; /* Aparece com mais destaque */
+    opacity: 0.9; /* Super nítida no início */
   }
   90% {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   100% {
     transform: translateY(-115vh) scale(1.2) translateX(30px);
