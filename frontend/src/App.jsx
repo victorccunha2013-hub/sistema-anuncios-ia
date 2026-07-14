@@ -96,7 +96,7 @@ function App() {
         <div className="bubble"></div>
       </div>
 
-      {/* NAVBAR SUPERIOR COM LOGO */}
+      {/* NAVBAR SUPERIOR COM LOGO DESTACADA */}
       <nav className="navbar">
         <div 
           className="brand" 
@@ -104,21 +104,22 @@ function App() {
             cursor: 'pointer', 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '12px' 
+            gap: '14px' 
           }} 
           onClick={() => { setCurrentScreen('home'); clearForm(); }}
         >
-          {/* Usando a variável importada para renderizar o logo */}
+          {/* Logo redimensionada para máxima visibilidade */}
           <img 
             src={logo} 
             alt="Adworkspace Logo" 
             style={{ 
-              height: '36px', 
+              height: '52px', /* Aumentado de 36px para 52px */
               width: 'auto',
-              objectFit: 'contain'
+              objectFit: 'contain',
+              display: 'block'
             }} 
           />
-          <span style={{ fontWeight: '700', fontSize: '22px', letterSpacing: '-0.5px' }}>
+          <span style={{ fontWeight: '700', fontSize: '24px', letterSpacing: '-0.5px' }}>
             Adworkspace
           </span>
         </div>
